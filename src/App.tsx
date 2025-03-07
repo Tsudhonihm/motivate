@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion'; // Fixed line break
+import { Share2, RefreshCw } from 'lucide-react'; // Sparkles removed
 import { quotes } from './quotes';
 
 function getRandomQuote() {
@@ -34,8 +35,10 @@ function App() {
       if (navigator.share) {
         await navigator.share(shareData);
       } else {
-        // Fallback for desktop browsers
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`, '_blank');
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`,
+          '_blank'
+        );
       }
     } catch (err) {
       console.error('Error sharing:', err);
@@ -50,8 +53,8 @@ function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
+          {/* Removed Sparkles icon */}
           <div className="flex items-center justify-center mb-8">
-            <Sparkles className="w-8 h-8 text-white mr-3" />
             <h1 className="text-3xl font-bold text-white">Daily Inspiration</h1>
           </div>
 
