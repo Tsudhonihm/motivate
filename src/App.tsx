@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import { motion, AnimatePresence } from 'framer-motion'; // Fixed line break
-import { Share2, RefreshCw } from 'lucide-react'; // Sparkles removed
+import { motion, AnimatePresence } from 'framer-motion';
+import { Share2, RefreshCw } from 'lucide-react';
 import { quotes } from './quotes';
 
 function getRandomQuote() {
@@ -47,15 +47,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full">
+      <div className="max-w-md w-full sm:max-w-lg md:max-w-2xl">
         <motion.div
-          className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20"
+          className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {/* Removed Sparkles icon */}
-          <div className="flex items-center justify-center mb-8">
-            <h1 className="text-3xl font-bold text-white">Daily Inspiration</h1>
+          <div className="flex items-center justify-center mb-6 sm:mb-8">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center">
+              Daily Inspiration
+            </h1>
           </div>
 
           <AnimatePresence mode="wait">
@@ -64,18 +65,20 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="text-center mb-8"
+              className="text-center mb-6 sm:mb-8"
             >
-              <p className="text-2xl text-white mb-4 italic">"{quote.text}"</p>
-              <p className="text-lg text-white/80">- {quote.author}</p>
+              <p className="text-lg sm:text-xl md:text-2xl text-white mb-3 sm:mb-4 italic">
+                "{quote.text}"
+              </p>
+              <p className="text-base sm:text-lg text-white/80">- {quote.author}</p>
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-purple-600 px-6 py-3 rounded-lg flex items-center transition-colors duration-200 font-semibold hover:bg-white/90"
+              className="bg-white text-purple-600 px-4 sm:px-6 py-3 rounded-lg flex items-center justify-center transition-colors duration-200 font-semibold hover:bg-white/90 w-full sm:w-auto"
               onClick={generateNewQuote}
             >
               <RefreshCw className="w-5 h-5 mr-2" />
@@ -85,7 +88,7 @@ function App() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-purple-600 px-6 py-3 rounded-lg flex items-center transition-colors duration-200 font-semibold hover:bg-white/90"
+              className="bg-white text-purple-600 px-4 sm:px-6 py-3 rounded-lg flex items-center justify-center transition-colors duration-200 font-semibold hover:bg-white/90 w-full sm:w-auto"
               onClick={shareQuote}
             >
               <Share2 className="w-5 h-5 mr-2" />
